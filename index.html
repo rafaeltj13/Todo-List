@@ -3,16 +3,27 @@
     <meta charset="UTF-8">
     <title>To Do List</title>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <!--link rel="stylesheet" type="text/css" href="css/app.css"-->
+    <!--link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    
 </head>
 <body>
 
+    <md-content>
+        <md-nav-bar md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-sref="home">Início</md-nav-item>
+            <md-nav-item md-nav-sref="addTask">Adicionar</md-nav-item>
+            <md-nav-item md-nav-sref="about">Sobre</md-nav-item>
+        </md-nav-bar>
+
+    </md-content>
     <div ui-view></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-messages.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
     <script src="config.js"></script>
+    <script src="js/controllers/tasksCtrl.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-aria.min.js"></script>
