@@ -25,8 +25,13 @@ angular.module("todoList")
           );
     };
 
-    $scope.finishTask = function (task) {
-        console.log(task);
-    }
+    $scope.finishTask = function (index) {
+        $scope.tasks.splice(index, 1);
+    };
+
+    $scope.addTask = function (task) {
+        $scope.tasks.push(task);
+        console.log($scope.tasks);
+    };
 
 }]);

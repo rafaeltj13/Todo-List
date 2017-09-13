@@ -1,3 +1,22 @@
 <div class="menu">
-    <h1 class="title">Adicionar Tarefa!</h1>
+    <h1 class="title">Adicionar Tarefa</h1>
+    <form name="addTaskForm" class="content">
+        <md-content layout-gt-sm="row" layout-padding>
+            <md-input-container class="form-input">
+                <label>Nome da tarefa</label>
+                <input ng-model="task.nome">
+            </md-input-container>
+            <md-input-container class="form-input">
+                <label>Prioridade</label>
+                <input ng-model="task.priority">
+            </md-input-container>
+        </md-content>
+        <md-content layout-gt-sm="row" layout-padding>
+            <md-input-container class="form-textarea">
+                <label>Descrição</label>
+                <input ng-model="task.description" md-maxlength="200">
+            </md-input-container>
+        </md-content>
+    </form>
+    <md-button class="md-raised md-primary" ng-disabled="addTaskForm.$invalid" ng-click="addTask(task)">Salvar</md-button>
 </div>

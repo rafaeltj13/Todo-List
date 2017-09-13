@@ -5,9 +5,9 @@
             <md-subheader class="md-no-sticky">Tarefas ativas</md-subheader>
             <md-list-item class="noright" ng-repeat="task in tasks" ng-click="openTask(task, $event)">
                 <div class="md-list-item-text noright">
-                    <h4>Nome: {{ task.name }}</h3>
+                    <h4>{{ task.name }}</h3>
                     <h5>Prioridade: {{ task.priority }}</h4>
-                    <md-checkbox class="md-secondary" ng-model="task.selected"></md-checkbox>
+                    <md-checkbox class="md-secondary" ng-model="task.selected" ng-change="finishTask($index)"></md-checkbox>
                 </div>
             </md-list-item>
         </md-list>

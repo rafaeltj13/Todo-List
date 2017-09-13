@@ -10,3 +10,9 @@
 .title {
     font-size: 2.2em;
 }
+.form-input {
+    width: 50%;
+}
+.form-textarea {
+    width: 99%;
+}
