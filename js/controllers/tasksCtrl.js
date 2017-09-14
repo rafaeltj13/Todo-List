@@ -1,19 +1,8 @@
 angular.module("todoList")
 
-.controller("tasksCtrl", ['$scope', '$mdDialog', function($scope, $mdDialog) {
+.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', function($scope, $mdDialog, taskServices, $state) {
 
-    $scope.tasks = [
-        {
-            name: "Dotar",
-            priority: "Alta",
-            description: "Testando descrição"
-        },
-        {
-            name: "Estudar",
-            priority: "Baixa",
-            description: "Descrição sendo testada"
-        }
-    ];
+    refreshTasks();
 
     $scope.openTask = function (task, event) {
         $mdDialog.show(
@@ -26,12 +15,17 @@ angular.module("todoList")
     };
 
     $scope.finishTask = function (index) {
-        $scope.tasks.splice(index, 1);
+        taskServices.tasks.splice(index, 1);
     };
 
     $scope.addTask = function (task) {
-        $scope.tasks.push(task);
+        taskServices.tasks.push(task);
         console.log($scope.tasks);
+        $state.go('home');
+    };
+
+    function refreshTasks() {
+        $scope.tasks = taskServices.tasks;
     };
 
 }]);
