@@ -2,15 +2,16 @@
     <h1 class="title">Listagem de tarefas</h1>
     <md-content>
         <md-input-container class="form-textarea">
-            <label>Buscar por</label>
+            <label>Buscar por tarefa</label>
             <input ng-model="search">
         </md-input-container>
         <md-list flex>
             <md-subheader class="md-no-sticky">Tarefas ativas</md-subheader>
             <md-list-item class="noright" ng-repeat="task in tasks | filter:search" ng-click="openTask(task, $event)">
                 <div class="md-list-item-text noright">
-                    <h4>{{ task.name }}</h3>
-                    <h5>Prioridade: {{ task.priority }}</h4>
+                    <h2>{{ task.name }}</h2>
+                    <h5>Prioridade: {{ task.priority }}</h5>
+                    <h5>Nível: {{ task.difficulty }}</h5>
                     <md-checkbox class="md-secondary" ng-model="task.selected" ng-change="finishTask($index)"></md-checkbox>
                 </div>
             </md-list-item>

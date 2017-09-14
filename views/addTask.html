@@ -7,8 +7,12 @@
                 <input ng-model="task.name">
             </md-input-container>
             <md-input-container class="form-input">
-                <label>Prioridade</label>
-                <input ng-model="task.priority">
+                <label>Nível</label>
+                <md-select ng-model="task.difficulty">
+                    <md-option ng-repeat="difficulty in difficulties" ng-value="difficulty">
+                      {{difficulty}}
+                    </md-option>
+                </md-select>
             </md-input-container>
         </md-content>
         <md-content layout-gt-sm="row" layout-padding>
@@ -17,6 +21,13 @@
                 <input ng-model="task.description" md-maxlength="200">
             </md-input-container>
         </md-content>
+        <div layout>
+            <div flex="10" layout layout-align="center center">
+              <span class="md-body-1">Prioridade</span>
+            </div>
+            <md-slider flex class="md-warn" md-discrete ng-model="task.priority" step="1" min="1" max="5">
+            </md-slider>
+        </div>
     </form>
     <md-button class="color" ng-disabled="addTaskForm.$invalid" ng-click="addTask(task)">Salvar</md-button>
 </div>
