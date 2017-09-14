@@ -16,3 +16,11 @@
 .form-textarea {
     width: 99%;
 }
+.color {
+    color: black;
+    background-color: #ffa366;
+}
+.logo {
+    font-weight: bold;
+    margin-left: 1%;
+}
