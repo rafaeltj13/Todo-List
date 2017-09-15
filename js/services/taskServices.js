@@ -1,6 +1,6 @@
 angular.module("todoList")
 
-.factory("taskServices", function (){
+.factory("taskServices", ['$state', 'DIFFICULTIES', function ($state, DIFFICULTIES){
 
     let tasks = [
         {
@@ -11,17 +11,28 @@ angular.module("todoList")
         },
         {
             name: "Estudar",
-            priority: "4",
+            priority: "1",
             description: "Descrição sendo testada",
             difficulty: "Difícil"
         }
     ];
 
-    let difficulties = ['Fácil', 'Médio', 'Difícil'];
+    let difficulties = [DIFFICULTIES.EASY, DIFFICULTIES.MEDIUM, DIFFICULTIES.HARD];
+
+    let addTask = function (task) {
+        tasks.push(task);
+        $state.go('home');
+    };
+
+    let finishTask = function (taskIndex) {
+        tasks.splice(taskIndex, 1);
+    };
 
     return {
         tasks: tasks,
-        difficulties: difficulties
+        difficulties: difficulties,
+        addTask: addTask,
+        finishTask: finishTask
     };
 
-});
+}]);

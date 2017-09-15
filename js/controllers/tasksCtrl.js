@@ -1,6 +1,6 @@
 angular.module("todoList")
 
-.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', function($scope, $mdDialog, taskServices, $state) {
+.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', 'Task', function($scope, $mdDialog, taskServices, $state, Task) {
 
     refresh();
 
@@ -15,13 +15,16 @@ angular.module("todoList")
     };
 
     $scope.finishTask = function (index) {
-        taskServices.tasks.splice(index, 1);
+        taskServices.finishTask(index).then(function (){
+            refresh();
+        });
     };
 
     $scope.addTask = function (task) {
-        taskServices.tasks.push(task);
-        console.log($scope.tasks);
-        $state.go('home');
+        let newTask = new Task(task);
+        taskServices.addTask(newTask).then(function (){
+            refresh();
+        });
     };
 
     function refresh() {
