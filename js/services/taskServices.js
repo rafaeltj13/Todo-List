@@ -1,6 +1,6 @@
 angular.module("todoList")
 
-.factory("taskServices", ['$state', 'DIFFICULTIES', function ($state, DIFFICULTIES){
+.factory("taskServices", ['$state', 'DIFFICULTIES', 'STATES', function ($state, DIFFICULTIES, STATES){
 
     let tasks = [
         {
@@ -17,22 +17,43 @@ angular.module("todoList")
         }
     ];
 
+    let getTasks = function () {
+        return tasks;
+    };
+
     let difficulties = [DIFFICULTIES.EASY, DIFFICULTIES.MEDIUM, DIFFICULTIES.HARD];
+
+    let getDifficulties = function () {
+        return difficulties;
+    };
 
     let addTask = function (task) {
         tasks.push(task);
-        $state.go('home');
+        $state.go(STATES.HOME);
     };
 
     let finishTask = function (taskIndex) {
         tasks.splice(taskIndex, 1);
     };
 
+    let orderTasksByPriority = function (task1, task2) {
+        let ascending = 1;
+        let descending = -1;
+        let neutral = 0;
+
+        if (task1.priority > task2.priority)
+            return descending;
+        if (task1.priority < task2.priority)
+            return ascending;
+        return neutral;
+    };
+
     return {
-        tasks: tasks,
-        difficulties: difficulties,
+        getTasks: getTasks,
+        getDifficulties: getDifficulties,
         addTask: addTask,
-        finishTask: finishTask
+        finishTask: finishTask,
+        orderTasksByPriority: orderTasksByPriority
     };
 
 }]);

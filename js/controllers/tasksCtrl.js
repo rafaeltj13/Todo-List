@@ -27,17 +27,23 @@ angular.module("todoList")
         });
     };
 
-    function refresh() {
-        $scope.tasks = taskServices.tasks;
-        $scope.tasks.sort(orderTasksByPriority);
-        $scope.difficulties = taskServices.difficulties;
+    $scope.cleanForm = function () {
+        $scope.task = {};
     };
 
-    function orderTasksByPriority(task1, task2) {
-        if (task1.priority > task2.priority)
-            return -1;
-        if (task1.priority < task2.priority)
-            return 1;
-        return 0;
+    $scope.checkTasksLength = function () {
+        if($scope.tasks.length === 0)
+            return true;
+        return false;
     };
-}]);
+
+    function refresh() {
+        $scope.tasks = taskServices.getTasks();
+        $scope.tasks.sort(taskServices.orderTasksByPriority);
+        $scope.difficulties = taskServices.getDifficulties();
+    };
+}])
+.config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('altTheme')
+      .primaryPalette('deep-orange');
+});

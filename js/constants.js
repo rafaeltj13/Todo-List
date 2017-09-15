@@ -4,4 +4,9 @@ angular.module("todoList")
     EASY: "Fácil",
     MEDIUM: "Médio",
     HARD: "Difícil"
+})
+.constant('STATES', {
+    HOME: 'home',
+    ADDTASK: 'addTask',
+    ABOUT: 'about'
 });

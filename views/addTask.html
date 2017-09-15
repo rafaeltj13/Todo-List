@@ -2,11 +2,11 @@
     <h1 class="title">Adicionar Tarefa</h1>
     <form name="addTaskForm" class="content">
         <md-content layout-gt-sm="row" layout-padding>
-            <md-input-container class="form-input">
+            <md-input-container class="form-input" md-theme="altTheme">
                 <label>Nome da tarefa</label>
                 <input ng-model="task.name">
             </md-input-container>
-            <md-input-container class="form-input">
+            <md-input-container class="form-input" md-theme="altTheme">
                 <label>Nível</label>
                 <md-select ng-model="task.difficulty">
                     <md-option ng-repeat="difficulty in difficulties" ng-value="difficulty">
@@ -16,18 +16,18 @@
             </md-input-container>
         </md-content>
         <md-content layout-gt-sm="row" layout-padding>
-            <md-input-container class="form-textarea">
-                <label>Descrição</label>
-                <input ng-model="task.description" md-maxlength="200">
+            <md-input-container class="form-input" md-theme="altTheme">
+                <textarea placeholder="Descrição" rows="2" max-rows="2" ng-model="task.description"></textarea>
+            </md-input-container>
+            <md-input-container class="form-input" layout="column" md-theme="altTheme">
+                <label>Prioridade</label>
+                <span flex></span>
+                <md-slider flex class="md-warn" md-discrete ng-model="task.priority" step="1" min="1" max="5">
+                </md-slider>
             </md-input-container>
         </md-content>
-        <div layout>
-            <div flex="10" layout layout-align="center center">
-              <span class="md-body-1">Prioridade</span>
-            </div>
-            <md-slider flex class="md-warn" md-discrete ng-model="task.priority" step="1" min="1" max="5">
-            </md-slider>
-        </div>
     </form>
     <md-button class="color" ng-disabled="addTaskForm.$invalid" ng-click="addTask(task)">Salvar</md-button>
+    <md-button class="color" ng-click="cleanForm()">Limpar</md-button>
 </div>
+

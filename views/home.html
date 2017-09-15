@@ -1,7 +1,7 @@
 <div class="menu">
     <h1 class="title">Listagem de tarefas</h1>
     <md-content>
-        <md-input-container class="form-textarea">
+        <md-input-container class="form-textarea" md-theme="altTheme">
             <label>Buscar por tarefa</label>
             <input ng-model="search">
         </md-input-container>
@@ -17,5 +17,6 @@
             </md-list-item>
         </md-list>
     </md-content>
-    <p>Para concluir uma tarefa, selecione o checkbox posicionado à direita.</p>
+    <p ng-hide="checkTasksLength()">Para concluir uma tarefa, selecione o checkbox posicionado à direita.</p>
+    <p ng-show="checkTasksLength()">Nenhuma tarefa ativa no momento.</p>
 </div>
