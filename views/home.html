@@ -6,7 +6,7 @@
             <input ng-model="search">
         </md-input-container>
         <md-list flex>
-            <md-subheader class="md-no-sticky">Tarefas ativas</md-subheader>
+            <md-subheader class="md-no-sticky" ng-hide="checkTasksLength()">Tarefas ativas</md-subheader>
             <md-list-item class="noright" ng-repeat="task in tasks | filter:search" ng-click="openTask(task, $event)">
                 <div class="md-list-item-text noright">
                     <h2>{{ task.name }}</h2>
