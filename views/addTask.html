@@ -1,15 +1,15 @@
-<div class="menu">
+<div class="menu" validacoes>
     <h1 class="title">Adicionar Tarefa</h1>
     <form name="addTaskForm" class="content">
         <md-content layout-gt-sm="row" layout-padding>
             <md-input-container class="form-input" md-theme="altTheme">
                 <label>Nome da tarefa</label>
-                <input ng-model="task.name">
+                <input ng-model="task.name" validations="validateString" required>
             </md-input-container>
             <md-input-container class="form-input" md-theme="altTheme">
                 <label>Nível</label>
-                <md-select ng-model="task.difficulty">
-                    <md-option ng-repeat="difficulty in difficulties" ng-value="difficulty">
+                <md-select ng-model="task.difficulty" validations="validateString" required>
+                    <md-option ng-repeat="difficulty in difficulties" ng-value="difficulty" >
                       {{difficulty}}
                     </md-option>
                 </md-select>
@@ -17,12 +17,12 @@
         </md-content>
         <md-content layout-gt-sm="row" layout-padding>
             <md-input-container class="form-input" md-theme="altTheme">
-                <textarea placeholder="Descrição" rows="2" max-rows="2" ng-model="task.description"></textarea>
+                <textarea placeholder="Descrição" rows="2" max-rows="2" ng-model="task.description"  validations="validateString" required></textarea>
             </md-input-container>
             <md-input-container class="form-input" layout="column" md-theme="altTheme">
                 <label>Prioridade</label>
                 <span flex></span>
-                <md-slider flex class="md-warn" md-discrete ng-model="task.priority" step="1" min="1" max="5">
+                <md-slider flex class="md-warn" md-discrete ng-model="task.priority" step="1" min="1" max="5" required>
                 </md-slider>
             </md-input-container>
         </md-content>

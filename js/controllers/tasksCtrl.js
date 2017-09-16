@@ -1,6 +1,7 @@
 angular.module("todoList")
 
-.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', 'Task', function($scope, $mdDialog, taskServices, $state, Task) {
+.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', 'Task', '$mdToast',
+ function($scope, $mdDialog, taskServices, $state, Task, $mdToast) {
 
     refresh();
 
@@ -45,5 +46,5 @@ angular.module("todoList")
 }])
 .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('altTheme')
-      .primaryPalette('deep-orange');
+      .primaryPalette('orange');
 });

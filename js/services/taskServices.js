@@ -55,5 +55,4 @@ angular.module("todoList")
         finishTask: finishTask,
         orderTasksByPriority: orderTasksByPriority
     };
-
 }]);
