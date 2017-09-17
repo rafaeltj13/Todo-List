@@ -3,13 +3,12 @@ angular.module("todoList")
 /**
  * Controller responsible for the tasks
  */
-.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', 'Task', '$mdToast',
- function($scope, $mdDialog, taskServices, $state, Task, $mdToast) {
+.controller("tasksCtrl", ['$scope', '$mdDialog', 'taskServices', '$state', '$mdToast', function($scope, $mdDialog, taskServices, $state, $mdToast) {
 
     refresh();
 
     /**
-     * Open a dialog with the description of the task.
+     * Opens a dialog with the description of the task.
      * 
      * @param {Object} task Task selected by the user.
      * @param event Event triggering action.
@@ -36,13 +35,12 @@ angular.module("todoList")
     };
 
     /**
-     * Creates and add a task into task list.
+     * Adds a task to the task list.
      * 
      * @param {Object} task Task to be added.
      */
     $scope.addTask = function (task) {
-        let newTask = new Task(task);
-        taskServices.addTask(newTask).then(function (){
+        taskServices.addTask(task).then(function (){
             refresh();
         });
     };
@@ -57,12 +55,10 @@ angular.module("todoList")
     /**
      * Checks if the length of the task list is zero.
      * 
-     * @return {boolean} if the task has 0 objects.
+     * @return {boolean} {@code true) if the there are no tasks in the list, {@code false} otherwise.
      */
     $scope.checkTasksLength = function () {
-        if($scope.tasks.length === 0)
-            return true;
-        return false;
+        return $scope.tasks.length === 0;
     };
 
     /**
@@ -70,15 +66,6 @@ angular.module("todoList")
      */
     function refresh() {
         $scope.tasks = taskServices.getTasks();
-        $scope.tasks.sort(taskServices.orderTasksByPriority);
         $scope.difficulties = taskServices.getDifficulties();
     };
-}])
-
-/**
- * Configuration of the angular material theme.
- */
-.config(function($mdThemingProvider) {
-    $mdThemingProvider.theme('altTheme')
-      .primaryPalette('orange');
-});
+}]);

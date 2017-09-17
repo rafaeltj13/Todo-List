@@ -4,11 +4,11 @@
         <md-content layout-gt-sm="row" layout-padding>
             <md-input-container class="form-input" md-theme="altTheme">
                 <label>Nome da tarefa</label>
-                <input ng-model="task.name" validations="validateString" required>
+                <input ng-model="task.name" fieldValidation="validateString" required>
             </md-input-container>
             <md-input-container class="form-input" md-theme="altTheme">
                 <label>Nível</label>
-                <md-select ng-model="task.difficulty" validations="validateString" required>
+                <md-select ng-model="task.difficulty" fieldValidation="validateString" required>
                     <md-option ng-repeat="difficulty in difficulties" ng-value="difficulty" >
                       {{difficulty}}
                     </md-option>
@@ -17,7 +17,7 @@
         </md-content>
         <md-content layout-gt-sm="row" layout-padding>
             <md-input-container class="form-input" md-theme="altTheme">
-                <textarea placeholder="Descrição" rows="2" max-rows="2" ng-model="task.description"  validations="validateString" required></textarea>
+                <textarea placeholder="Descrição" rows="2" max-rows="2" ng-model="task.description"  fieldValidation="validateString" required></textarea>
             </md-input-container>
             <md-input-container class="form-input" layout="column" md-theme="altTheme">
                 <label>Prioridade</label>

@@ -1,14 +1,14 @@
 angular.module("todoList")
 
 /**
- * Task factory.
+ * Factory which represents the entity Task
  */
 .factory('Task', [function () {
 
     /**
      * Task constructor.
      * 
-     * @param {Object} task Object containing task informations.
+     * @param {Object} task Object containing task's informations.
      * @constructor
      */
     function Task(task) {

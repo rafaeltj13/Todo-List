@@ -1,9 +1,9 @@
 angular.module("todoList")
 
 /**
- * Services for the task controller.
+ * Service responsable for task's operations.
  */
-.factory("taskServices", ['$state', 'DIFFICULTIES', 'STATES', function ($state, DIFFICULTIES, STATES){
+.factory("taskServices", ['$state', 'DIFFICULTIES', 'STATES', 'Task', function ($state, DIFFICULTIES, STATES, Task){
 
     let tasks = [];
 
@@ -28,12 +28,14 @@ angular.module("todoList")
     };
 
     /**
-     * Adds a task to the task list.
+     * Creates and add a task into task list.
      * 
      * @param {Object} task Task to be added.
      */
     let addTask = function (task) {
-        tasks.push(task);
+        let newTask = new Task(task);
+        tasks.push(newTask);
+        tasks.sort(orderTasksByPriority);
         $state.go(STATES.HOME);
     };
 

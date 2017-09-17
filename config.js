@@ -1,7 +1,9 @@
 angular.module('todoList', ['ui.router', 'ngMaterial'])
 
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider', function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
     
+    $mdThemingProvider.theme('altTheme').primaryPalette('orange');
+
     $urlRouterProvider.otherwise('/home');
     
     $stateProvider
