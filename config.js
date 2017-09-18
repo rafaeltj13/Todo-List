@@ -4,7 +4,7 @@ angular.module('todoList', ['ui.router', 'ngMaterial'])
     
     $mdThemingProvider.theme('altTheme').primaryPalette('orange');
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/about');
     
     $stateProvider
 

@@ -29,9 +29,8 @@ angular.module("todoList")
      * @param {Number} index Index of the task.
      */
     $scope.finishTask = function (index) {
-        taskServices.finishTask(index).then(function (){
-            refresh();
-        });
+        taskServices.finishTask(index);
+        refresh();
     };
 
     /**
@@ -40,9 +39,8 @@ angular.module("todoList")
      * @param {Object} task Task to be added.
      */
     $scope.addTask = function (task) {
-        taskServices.addTask(task).then(function (){
-            refresh();
-        });
+        taskServices.addTask(task);
+        refresh();
     };
 
     /**

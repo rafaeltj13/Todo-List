@@ -3,7 +3,9 @@ angular.module("todoList")
 /**
  * Service responsable for task's operations.
  */
-.factory("taskServices", ['$state', 'DIFFICULTIES', 'STATES', 'Task', function ($state, DIFFICULTIES, STATES, Task){
+.factory("taskServices", ['$state', 'DIFFICULTIES', 'STATES', 'Task', 'RestService', function ($state, DIFFICULTIES, STATES, Task, RestService){
+
+    //const url = 'http://localhost:3000/api/v1/tasks';
 
     let tasks = [];
 
@@ -16,6 +18,10 @@ angular.module("todoList")
      */
     let getTasks = function () {
         return tasks;
+        /*RestService.find(url, function(response) {
+            tasks = response.data.data;
+        });
+        return tasks;*/
     };
 
     /**
@@ -36,6 +42,7 @@ angular.module("todoList")
         let newTask = new Task(task);
         tasks.push(newTask);
         tasks.sort(orderTasksByPriority);
+        //RestService.add(url,newTask);
         $state.go(STATES.HOME);
     };
 
@@ -46,6 +53,7 @@ angular.module("todoList")
      */
     let finishTask = function (taskIndex) {
         tasks.splice(taskIndex, 1);
+        //RestService.delete(url+'/'+taskIndex);
     };
 
     /**
